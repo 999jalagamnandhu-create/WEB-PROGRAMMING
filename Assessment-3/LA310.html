@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Checkbox Selection</title>
+</head>
+<body>
+
+<h2>Select Subjects</h2>
+
+<input type="checkbox" name="subject" value="Math"> Math<br>
+<input type="checkbox" name="subject" value="Science"> Science<br>
+<input type="checkbox" name="subject" value="English"> English<br>
+<input type="checkbox" name="subject" value="Computer"> Computer<br><br>
+
+<button onclick="showSubjects()">Show Selected Subjects</button>
+
+<p id="result"></p>
+
+<script>
+function showSubjects()
+{
+    let subjects = document.getElementsByName("subject");
+    let selected = [];
+    let count = 0;
+
+    for(let i = 0; i < subjects.length; i++)
+    {
+        if(subjects[i].checked)
+        {
+            selected.push(subjects[i].value);
+            count++;
+        }
+    }
+
+    document.getElementById("result").innerHTML =
+    "Selected Subjects: " + selected.join(", ") + "<br>" +
+    "Total Selected: " + count;
+}
+</script>
+<p>24BKT0129</p>
+<p>J. NANDHA KISHOR</p>
+</body>
+</html>

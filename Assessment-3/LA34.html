@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Rectangle Area Calculator</title>
+
+<script>
+function calculateArea() {
+
+    
+    var lengthValue = 10;
+    var widthValue = 5;
+    var areaResult = lengthValue * widthValue;
+
+   
+    lengthValue = 10.5;
+    widthValue = 5.2;
+    var floatAreaResult = lengthValue * widthValue;
+
+    document.getElementById("output").innerHTML =
+        "Area with Integer Values: " + areaResult +
+        "<br>Area with Floating Point Values: " + floatAreaResult;
+}
+</script>
+
+</head>
+<body>
+
+<h2>Rectangle Area Calculator</h2>
+
+<button onclick="calculateArea()">Calculate Area</button>
+
+<p id="output"></p>
+<p>24BKT0129</p>
+<p>J. NANDHA KISHOR</p>
+</body>
+</html>

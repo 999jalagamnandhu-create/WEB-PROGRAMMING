@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Interest Calculator</title>
+
+<style>
+body{
+    font-family: Arial;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    text-align: center;
+    padding-top: 80px;
+}
+
+.container{
+    background: white;
+    width: 350px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px gray;
+}
+
+input{
+    width: 80%;
+    padding: 8px;
+    margin: 8px;
+}
+
+button{
+    padding: 10px 20px;
+    background: #4facfe;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover{
+    background: #0077cc;
+}
+
+#result{
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bold;
+}
+</style>
+
+<script>
+
+// Function implementing SI formula
+function simpleInterest(P, R, T)
+{
+    return (P * R * T) / 100;
+}
+
+// Function to take input and display result
+function calculateSI()
+{
+    let p = document.getElementById("principal").value;
+    let r = document.getElementById("rate").value;
+    let t = document.getElementById("time").value;
+
+    let si = simpleInterest(p, r, t);
+
+    document.getElementById("result").innerHTML =
+        "Simple Interest = " + si;
+}
+
+function resetFields()
+{
+    document.getElementById("principal").value = "";
+    document.getElementById("rate").value = "";
+    document.getElementById("time").value = "";
+    document.getElementById("result").innerHTML = "";
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="container">
+<h2>Simple Interest Calculator</h2>
+
+<input type="number" id="principal" placeholder="Enter Principal"><br>
+
+<input type="number" id="rate" placeholder="Enter Rate (%)"><br>
+
+<input type="number" id="time" placeholder="Enter Time (years)"><br>
+
+<button onclick="calculateSI()">Calculate</button>
+<button onclick="resetFields()">Reset</button>
+
+<p id="result"></p>
+</div>
+<p>24BKT0129</p>
+<p>J. NANDHA KISHOR</p>
+</body>
+</html>

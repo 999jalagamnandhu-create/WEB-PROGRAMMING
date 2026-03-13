@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Order Form</title>
+</head>
+<body>
+
+<h2>Product Order Form</h2>
+
+<form>
+
+<fieldset>
+<legend>Electronics</legend>
+<input type="checkbox" class="product" value="500"> Headphones (₹500)<br>
+<input type="checkbox" class="product" value="1200"> Keyboard (₹1200)<br>
+<input type="checkbox" class="product" value="800"> Mouse (₹800)<br>
+</fieldset>
+
+<br>
+
+<fieldset>
+<legend>Accessories</legend>
+<input type="checkbox" class="product" value="300"> USB Cable (₹300)<br>
+<input type="checkbox" class="product" value="700"> Power Bank (₹700)<br>
+<input type="checkbox" class="product" value="150"> Phone Stand (₹150)<br>
+</fieldset>
+
+<br>
+
+<button type="button" onclick="calculateTotal()">Calculate Total</button>
+
+<p id="result"></p>
+
+</form>
+
+<script>
+function calculateTotal()
+{
+    let items = document.querySelectorAll(".product");
+    let total = 0;
+
+    for (let item of items)
+    {
+        if(item.checked)
+        {
+            total += parseFloat(item.value);
+        }
+    }
+
+    document.getElementById("result").innerHTML = "Total Price: ₹ " + total;
+}
+</script>
+<p>24BKT0129</p>
+<p>J. NANDHA KISHOR</p>
+</body>
+</html>

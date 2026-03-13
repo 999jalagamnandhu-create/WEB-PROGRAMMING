@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Overlapping Image Gallery</title>
+
+<style>
+.gallery {
+    position: relative;
+    width: 500px;
+    height: 300px;
+}
+
+.gallery img {
+    width: 200px;
+    height: 150px;
+    position: absolute;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+#img1 { left: 20px; top: 20px; }
+#img2 { left: 120px; top: 60px; }
+#img3 { left: 220px; top: 100px; }
+
+</style>
+</head>
+
+<body>
+
+<h2>Overlapping Image Gallery</h2>
+
+<div class="gallery">
+<img src="https://picsum.photos/200/150?random=1" id="img1" onclick="bringFront(this)">
+<img src="https://picsum.photos/200/150?random=2" id="img2" onclick="bringFront(this)">
+<img src="https://picsum.photos/200/150?random=3" id="img3" onclick="bringFront(this)">
+</div>
+
+<script>
+
+let topIndex = 1; 
+
+function bringFront(img)
+{
+    img.style.zIndex = ++topIndex; 
+}
+
+</script>
+
+<p>24BKT0129</p>
+<p>J. NANDHA KISHOR</p>
+
+</body>
+</html>

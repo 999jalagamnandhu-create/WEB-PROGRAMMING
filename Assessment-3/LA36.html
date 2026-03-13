@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Student Information System</title>
+
+<style>
+body{
+    font-family: Arial;
+    background-color: #f2f2f2;
+}
+
+h2{
+    text-align:center;
+}
+
+form{
+    background:white;
+    padding:15px;
+    width:300px;
+    margin:auto;
+    border-radius:5px;
+}
+
+table{
+    border-collapse: collapse;
+    margin:20px auto;
+    width:60%;
+    background:white;
+}
+
+th, td{
+    border:1px solid black;
+    padding:8px;
+    text-align:center;
+}
+
+button{
+    margin-top:10px;
+}
+</style>
+
+<script>
+
+var students = [];   // Global array
+
+
+function Student(name, age, course){
+    this.name = name;
+    this.age = age;
+    this.course = course;
+
+    this.display = function(){
+        return "<tr><td>" + this.name + "</td><td>" + this.age + "</td><td>" + this.course + "</td></tr>";
+    }
+}
+
+function addStudent(btn){
+
+    var form = btn.form;
+
+    var name = form.elements["name"].value;
+    var age = form.elements["age"].value;
+    var course = form.elements["course"].value;
+
+    var studentObj = new Student(name, age, course);
+    students.push(studentObj);
+
+    generateTable();
+
+    form.reset();
+    form.elements["name"].focus();
+}
+
+function generateTable(){
+
+    var tableContent = "<tr><th>Name</th><th>Age</th><th>Course</th></tr>";
+
+    for(var i = 0; i < students.length; i++){
+        tableContent += students[i].display();
+    }
+
+    document.getElementById("studentTable").innerHTML = tableContent;
+}
+
+</script>
+</head>
+
+<body>
+
+<h2>Student Information System</h2>
+
+<form>
+Name: <input type="text" name="name"><br><br>
+Age: <input type="number" name="age"><br><br>
+
+Course:
+<select name="course">
+<option>BCA</option>
+<option>BSc</option>
+<option>BBA</option>
+<option>MCA</option>
+</select><br><br>
+
+<button type="button" onclick="addStudent(this)">Add Student</button>
+<button type="reset">Clear</button>
+</form>
+
+<table id="studentTable">
+<tr>
+<th>Name</th>
+<th>Age</th>
+<th>Course</th>
+</tr>
+</table>
+<p>24BKT0129</p>
+<p>J. NANDHA KISHOR</p>
+</body>
+</html>
