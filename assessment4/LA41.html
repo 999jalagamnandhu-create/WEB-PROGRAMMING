@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>React Personalized Welcome</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function Welcome(props) {
+      const style = {
+        color: "#2c3e50",
+        fontFamily: "Arial, sans-serif",
+        textAlign: "center",
+        marginTop: "50px"
+      };
+
+      return (
+        <div style={style}>
+          <h1>Hello, {props.name}!</h1>
+          <h2>Welcome to {props.city} 🌆</h2>
+          <p>
+            This is a simple React application that demonstrates the use of
+            functional components, props, JSX syntax, and inline styling.
+          </p>
+        </div>
+      );
+    }
+
+    function App() {
+      return <Welcome name="Nandha" city="Chennai" />;
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+<p>24BKT0129</p>
+<p>J. NANDHA KISHOR</p>
+</body>
+</html>
