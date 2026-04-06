@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>React Todo List</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    .container {
+      width: 350px;
+      margin: 80px auto;
+      padding: 20px;
+      border: 2px solid #333;
+      border-radius: 10px;
+      text-align: center;
+      font-family: Arial;
+      background-color: #f4f4f4;
+    }
+
+    input {
+      width: 70%;
+      padding: 8px;
+      margin-right: 5px;
+    }
+
+    button {
+      padding: 8px 12px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin-top: 15px;
+    }
+
+    li {
+      background: #fff;
+      margin: 5px 0;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      text-align: left;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function TodoApp() {
+      const [task, setTask] = useState("");
+      const [tasks, setTasks] = useState([]);
+
+      const addTask = () => {
+        if (task.trim() !== "") {
+          setTasks([...tasks, task]);
+          setTask("");
+        }
+      };
+
+      return (
+        <div className="container">
+          <h2>Todo List</h2>
+
+          <input
+            type="text"
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
+            placeholder="Enter a task"
+          />
+
+          <button onClick={addTask}>Add</button>
+
+          <ul>
+            {tasks.map((t, index) => (
+              <li key={index}>{t}</li>
+            ))}
+          </ul>
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<TodoApp />);
+  </script>
+<p>24BKT0129</p>
+<p>J. NANDHA KISHOR</p>
+</body>
+</html>

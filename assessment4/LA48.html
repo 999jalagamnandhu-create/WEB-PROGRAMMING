@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Country Explorer</title>
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body {
+      font-family: Arial;
+      background: #f4f4f4;
+      text-align: center;
+    }
+
+    .container {
+      width: 90%;
+      margin: 20px auto;
+    }
+
+    input {
+      padding: 8px;
+      width: 60%;
+      margin-right: 5px;
+    }
+
+    button {
+      padding: 8px 12px;
+      background: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+
+    .grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      justify-content: center;
+      margin-top: 20px;
+    }
+
+    .card {
+      width: 220px;
+      padding: 10px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.2);
+      text-align: left;
+    }
+
+    img {
+      width: 100%;
+      height: 130px;
+      object-fit: cover;
+    }
+
+    h1 {
+      color: #2c3e50;
+    }
+
+    h3 {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    function fetchCountries(query) {
+      return fetch(`https://restcountries.com/v3.1/name/${query}`)
+        .then(res => res.json())
+        .then(data => data || []);
+    }
+
+    function Header() {
+      return <h1>Country Explorer</h1>;
+    }
+
+    function Search({ query, setQuery, handleSearch }) {
+      return (
+        <div>
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Search country..."
+          />
+          <button onClick={handleSearch}>Search</button>
+        </div>
+      );
+    }
+
+    function CountryCard({ country }) {
+      return (
+        <div className="card">
+          <img src={country.flags.png} />
+          <h3>{country.name.common}</h3>
+          <p>Capital: {country.capital ? country.capital[0] : "N/A"}</p>
+          <p>Population: {country.population.toLocaleString()}</p>
+          <p>Region: {country.region}</p>
+        </div>
+      );
+    }
+
+    function CountryList({ countries }) {
+      return (
+        <div className="grid">
+          {countries.map((c, index) => (
+            <CountryCard key={index} country={c} />
+          ))}
+        </div>
+      );
+    }
+
+    function App() {
+      const [query, setQuery] = useState("");
+      const [countries, setCountries] = useState([]);
+
+      const handleSearch = () => {
+        if (query !== "") {
+          fetchCountries(query).then(data => setCountries(data));
+        }
+      };
+
+      return (
+        <div className="container">
+          <Header />
+          <Search query={query} setQuery={setQuery} handleSearch={handleSearch} />
+          <CountryList countries={countries} />
+        </div>
+      );
+    }
+
+    const root = ReactDOM.createRoot(document.getElementById("root"));
+    root.render(<App />);
+  </script>
+
+<p>24BKT0129</p>
+<p>J. NANDHA KISHOR</p>
+
+</body>
+</html>
